@@ -1,0 +1,46 @@
+<div id="nav" class="w-full px-6">
+  <!-- bg-blue-800 -->
+  @for (item of menuOption; track item.router) {
+  <a
+    [routerLink]="item.router"
+    routerLinkActive="bg-blue-800"
+    class="w-full px-2 inline-flex space-x-2 items-center border-b border-slate-700 py-3 hover:bg-white/5 transition ease-linear duration-150"
+  >
+    <div>
+      <!-- <i class="{{ item.icon }}"></i> -->
+      <i [class]="item.icon"></i>
+    </div>
+    <div class="flex flex-col">
+      <span class="text-lg font-bold leading-5 text-white">{{
+        item.label
+      }}</span>
+      <span class="text-sm text-white/50 hidden md:block">{{
+        item.subLabel
+      }}</span>
+    </div>
+  </a>
+  }
+
+  <hr class="my-3" />
+  <h3 class="text-lg font-bold leading-5 text-white text-center my-3">
+    History
+  </h3>
+  @for (item of gifsService.searchHistoryKeys(); track $index) {
+
+  <a
+    [routerLink]="['/dashboard/history', item]"
+    routerLinkActive="bg-blue-800"
+    class="w-full px-2 inline-flex space-x-2 items-center border-b border-slate-700 py-3 hover:bg-white/5 transition ease-linear duration-150"
+  >
+    <div>
+      <!-- <i class="{{ item.icon }}"></i>
+      <i [class]="item.icon"></i> -->
+      <i class="fa-solid fa-clock-rotate-left"></i>
+    </div>
+    <div class="flex flex-col">
+      <span class="text-lg font-bold leading-5 text-white">{{ item }}</span>
+      <span class="text-sm text-white/50 hidden md:block">{{ item }}</span>
+    </div>
+  </a>
+  }
+</div>
